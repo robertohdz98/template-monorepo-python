@@ -1,0 +1,12 @@
+[tool.poetry]
+name = "module-two-template"
+version = "1.0.0"
+description = "This is the second module of this Monorepo Template"
+authors = [
+    "Roberto Hernandez <betohr60@gmail.com>"
+]
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.12"
+ipykernel = "6.21.*"
+pandas = "^2.0.3"
