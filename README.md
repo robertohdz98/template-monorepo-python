@@ -1,4 +1,4 @@
-# Monorepo Template
+# Python Monorepo Template
 
 Sometimes, **it is difficult to manage a single repository (i.e., `monorepo`) for a project that contains different modules or components** (e.g., an API, a pipeline, a different service), whose dependencies, libraries or development environment **may be completely different** (and therefore they should be **managed independently**). 
 
