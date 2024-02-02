@@ -1,4 +1,4 @@
-# Monorepo Template
+# Python Monorepo Template
 
 Sometimes, **it is difficult to manage a single repository (i.e., `monorepo`) for a project that contains different modules or components** (e.g., an API, a pipeline, a different service), whose dependencies, libraries or development environment **may be completely different** (and therefore they should be **managed independently**). 
 
@@ -91,4 +91,3 @@ So, this is as simple as opening the specific development environment depending 
 - https://github.com/devcontainers/spec/issues/159
 - https://docs.github.com/en/enterprise-cloud@latest/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers#devcontainerjson
 - https://mlops.community/how-to-configure-vs-code-for-ai-ml-and-mlops-development-in-python-%F0%9F%9B%A0%EF%B8%8F%EF%B8%8F/
-			
