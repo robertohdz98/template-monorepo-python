@@ -20,17 +20,17 @@ The root directory of the repository will consist of one directory `$moduleName`
     │          └── devcontainer.json
     │
     ├── module-one
-    │     ├── src/                     <--- Source code for indiv component 1        
+    │     ├── src/package              <--- Source code for indiv component 1        
     |     ├── Dockerfile               <--- Dockerfile for dev container 1
     │     ├── poetry.lock              <--- Poetry dependencies of module 1 (do not edit)
-    │     ├── pyproject.toml           <--- Poetry dependencies management of the specific module 1
+    │     ├── pyproject.toml           <--- Poetry dependencies management of module 1
     │     └── README.md                <--- Description of the specific module 1
     │
     ├── module-two
-    │     ├── src/                     <--- Source code for indiv component 2       
+    │     ├── src/package              <--- Source code for indiv component 2       
     |     ├── Dockerfile               <--- Dockerfile for dev container 2
     │     ├── poetry.lock              <--- Poetry dependencies of module 2 (do not edit)
-    │     ├── pyproject.toml           <--- Poetry dependencies management of the specific module 2
+    │     ├── pyproject.toml           <--- Poetry dependencies management of module 2
     │     └── README.md                <--- Description of the specific module 2
     │
     └── README.md                      <--- Top-level description of the project
@@ -50,7 +50,7 @@ The most important JSON fields to be considered (and that must be updated accord
 
 
 - `"build":{"context": "../../$moduleName",`
-`"dockerfile": "../../$moduleName/Dockerfile"}`
+`"dockerfile": "Dockerfile"}`
 These both options set **(a)** the location of the context folder for building the Docker image, and **(b)** the location of the Dockerfile that defines the contents of the container. Both paths are relative to the folder containing the `devcontainer.json` file, so they must reference the specific module directory of the root directory of the monorepo.
 
     **NOTE:** The main objective of this approach is to keep the development environments isolated, so that **(a)** no other modules' files are copied into the development environment of a specific module, and **(b)** only the dependencies and libraries strictly necessary for the development of that specific component are installed (managed from $moduleName/pyproject.toml and detailed at its associated $moduleName/poetry.lock).
@@ -58,6 +58,27 @@ These both options set **(a)** the location of the context folder for building t
 - `"workspaceFolder": "/app"`: The name of the actual root workspace folder in the dev container, where the source code and files in $moduleName dir will be copied.
 
 - `"workspaceMount": "source=${localWorkspaceFolder}/$moduleName,target=/app,type=bind,consistency=delegated",`: This specifies that the source code and files in $moduleName dir will be mounted in our devcontainer workspace dir "app/".
+
+- **Extensions**:
+
+    - "ms-python.python": linting, debugging, code formatting
+	- "ms-python.vscode-pylance": python for vscode
+	- "ms-python.flake8", "ms-python.pylint": linting support
+	- "ms-python.black-formatter": formatter
+	- "ms-python.isort": imports organization support 
+	- "ms-toolsai.jupyter", "ms-toolsai.jupyter-renderers": jupyter notebooks support
+	- "eamodio.gitlens": code authorship and more git features
+	- "usernamehw.errorlens": highlighting of errors
+	- "njpwerner.autodocstring": generate docstrings from obj definitions
+	- "KevinRose.vsc-python-indent": python indentation support
+	- "tamasfe.even-better-toml": TOML language support
+	- "redhat.vscode-yaml": YAML language support
+	- "yzhang.markdown-all-in-one": markdown files support
+	- "GitHub.vscode-github-actions": manage GitHub Actions
+	- "wayou.vscode-todo-highlight": highlighting TODO, FIXME annotations
+	- "mikestead.dotenv": highlighting dotenv files
+	- "ms-kubernetes-tools.vscode-kubernetes-tools": k8s apps support
+			
 
 
 So, this is as simple as opening the specific development environment depending on the specific module in which we are going to develop, and manage from within the dependencies of that component without affecting the others, based on this proposed template.
@@ -69,3 +90,5 @@ So, this is as simple as opening the specific development environment depending 
 - https://containers.dev/implementors/spec/#devcontainerjson
 - https://github.com/devcontainers/spec/issues/159
 - https://docs.github.com/en/enterprise-cloud@latest/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers#devcontainerjson
+- https://mlops.community/how-to-configure-vs-code-for-ai-ml-and-mlops-development-in-python-%F0%9F%9B%A0%EF%B8%8F%EF%B8%8F/
+			
